@@ -25,9 +25,4 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu,compute,utility]
-    networks:
-      - docker_network_bridge
 
-networks:
-  docker_network_bridge:
-    external: true
