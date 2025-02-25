@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  lightrag:
+    container_name: lightrag
+    image: ghcr.io/xpertdev/lightrag:latest
+    ports:
+      - "${PORT:-9621}:9621"
+    volumes:
+      - ./data/rag_storage:/app/data/rag_storage
+      - ./data/inputs:/app/data/inputs
+      - .env:/app/.env
+    env_file:
+      - .env
+    environment:
+      - TZ='America/New_York'
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu,compute,utility]
+    networks:
+      - docker_network_bridge
+
+networks:
+  docker_network_bridge:
+    external: true
