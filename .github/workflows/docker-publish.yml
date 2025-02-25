@@ -2,9 +2,9 @@ name: Build and Publish Docker Image
 
 on:
   schedule:
-    - cron: '0 0 * * 0' #run on sunday
+    - cron: '0 0 * * *' #run everyday at midnight
   push:
-    branches: [ master, main, feature/build-and-publish-GH-workflow ]
+    branches: [ master, main ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
@@ -43,7 +43,7 @@ jobs:
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
       - name: Install cosign
-        if: github.event_name != 'pull_request_'
+        if: github.event_name != 'pull_request'
         uses: sigstore/cosign-installer@main
         #with:
         #  cosign-release: 'v1.9.0' #optional
@@ -60,7 +60,7 @@ jobs:
       # # https://github.com/docker/login-action
       - name: Log into registry ${{ env.REGISTRY }}
         # disable for now.
-        if: github.event_name != 'pull_request_'
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
@@ -69,7 +69,7 @@ jobs:
 
       # # Login to DockerHub
       # - name: Log into registry docker.io
-      #   if: github.event_name != 'pull_request_'
+      #   if: github.event_name != 'pull_request'
       #   uses: docker/login-action@v3
       #   with:
       #     username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -103,7 +103,7 @@ jobs:
           file: ./lightrag-src/Dockerfile
           #platforms: linux/amd64,linux/arm64
           platforms: linux/amd64
-          push: ${{ github.event_name != 'pull_request_' }}
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           #build-args: |
@@ -116,7 +116,7 @@ jobs:
       # https://github.com/sigstore/cosign
       - name: Sign the published Docker image
         # disable for now.  
-        if: ${{ false && github.event_name != 'pull_request_' }}
+        if: ${{ false && github.event_name != 'pull_request' }}
         env:
           COSIGN_EXPERIMENTAL: "true"
         # This step uses the identity token to provision an ephemeral certificate

@@ -1,4 +1,4 @@
-# LightRAG-docker
+# Docker image for LightRAG
 
 Docker image for LightRAG: Simple and Fast Retrieval-Augmented Generation
 
@@ -7,10 +7,6 @@ This repository contains the Docker image for the [LightRAG](https://github.com/
 ## Build Status
 
 ![Build Status](https://github.com/xpertdev/lightrag/actions/workflows/docker-publish.yml/badge.svg)
-
-## Last Run
-
-The last successful run of the Docker image build was on: `YYYY-MM-DD HH:MM:SS` (replace with actual date and time).
 
 ## Usage
 
