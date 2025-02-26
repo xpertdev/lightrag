@@ -1,6 +1,6 @@
 # Docker image for LightRAG
 
-Docker image for LightRAG: Simple and Fast Retrieval-Augmented Generation
+Docker image for [LightRAG: Simple and Fast Retrieval-Augmented Generation](https://github.com/HKUDS/LightRAG)
 
 This repository contains the Docker image for the [LightRAG](https://github.com/HKUDS/LightRAG) project. The image is designed to provide a simple and fast environment for running Retrieval-Augmented Generation tasks.
 
