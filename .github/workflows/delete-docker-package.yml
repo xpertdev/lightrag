@@ -133,7 +133,7 @@ jobs:
       - name: Delete old package versions
         uses: actions/delete-package-versions@v4
         with:
-          #owner: xpertdev
-          package-name: ${{ env.IMAGE_NAME }}
+          owner: xpertdev
+          package-name: lightrag
           package-type: container
           min-versions-to-keep: 100
