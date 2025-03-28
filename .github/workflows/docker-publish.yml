@@ -132,7 +132,7 @@ jobs:
         uses: smartsquaregmbh/delete-old-packages@main
         with:
           #organization: my-organization
-          #user: ${{ github.actor }}
+          user: ${{ github.actor }}
           type: docker
           names: |
             ${{ env.IMAGE_NAME }}
