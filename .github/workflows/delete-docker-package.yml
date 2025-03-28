@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '0 0 * * *' #run everyday at midnight
   push:
-    branches: [ master, main ]
+    branches: [ master, main, feature/delete-old-packages ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
@@ -133,6 +133,6 @@ jobs:
       - name: Delete old package versions
         uses: actions/delete-package-versions@v4
         with:
-          package-name: lightrag
+          package-name: '${{ github.repository_owner }}/lightrag'
           package-type: container
           min-versions-to-keep: 100
