@@ -135,4 +135,4 @@ jobs:
           user: ${{ github.actor }}
           type: docker
           names: |
-            ${{ env.IMAGE_NAME }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
