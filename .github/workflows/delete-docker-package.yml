@@ -134,6 +134,6 @@ jobs:
         uses: actions/delete-package-versions@v4
         with:
           #owner: xpertdev
-          package-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          package-name: ${{ env.IMAGE_NAME }}
           package-type: container
           min-versions-to-keep: 100
