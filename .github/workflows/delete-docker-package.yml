@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '0 0 * * *' #run everyday at midnight
   push:
-    branches: [ master, main, feature/delete-old-packages ]
+    branches: [ master, main ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
